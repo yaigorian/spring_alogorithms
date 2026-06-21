@@ -37,3 +37,58 @@ TEST(BalancedBSTTest, IgnoresDuplicateInsertions) {
   tree.Remove(3);
   EXPECT_FALSE(tree.Find(3));
 }
+
+TEST(BalancedBSTTest, FindOnEmptyTreeReturnsFalse) {
+  BalancedBST tree;
+  EXPECT_FALSE(tree.Find(42));
+  EXPECT_FALSE(tree.Find(0));
+  EXPECT_FALSE(tree.Find(-1));
+}
+
+TEST(BalancedBSTTest, RemoveNonExistentKeyIsNoop) {
+  BalancedBST tree;
+  tree.Insert(10);
+  tree.Insert(20);
+  tree.Insert(30);
+
+  tree.Remove(99);
+  tree.Remove(-5);
+  tree.Remove(15);
+
+  EXPECT_TRUE(tree.Find(10));
+  EXPECT_TRUE(tree.Find(20));
+  EXPECT_TRUE(tree.Find(30));
+}
+
+TEST(BalancedBSTTest, RemoveOnEmptyTreeDoesNotCrash) {
+  BalancedBST tree;
+  tree.Remove(1);
+  EXPECT_FALSE(tree.Find(1));
+}
+
+TEST(BalancedBSTTest, StaysCorrectAfterManyMixedOperations) {
+  BalancedBST tree;
+  for (int i = 0; i < 1000; ++i) {
+    tree.Insert(i);
+  }
+  for (int i = 0; i < 1000; ++i) {
+    EXPECT_TRUE(tree.Find(i));
+  }
+  for (int i = 0; i < 1000; i += 2) {
+    tree.Remove(i);
+  }
+  for (int i = 0; i < 1000; ++i) {
+    if (i % 2 == 0) {
+      EXPECT_FALSE(tree.Find(i));
+    } else {
+      EXPECT_TRUE(tree.Find(i));
+    }
+  }
+
+  for (int i = -500; i < 0; ++i) {
+    tree.Insert(i);
+  }
+  for (int i = -500; i < 0; ++i) {
+    EXPECT_TRUE(tree.Find(i));
+  }
+}

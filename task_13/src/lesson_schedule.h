@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <vector>
 
 struct Lesson {
@@ -7,4 +8,5 @@ struct Lesson {
   double end;
 };
 
-std::vector<Lesson> SelectMaximumLessons(const std::vector<Lesson>& lessons);
+std::vector<std::size_t> SelectMaximumLessons(
+    const std::vector<Lesson>& lessons);

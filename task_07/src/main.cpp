@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "../header/mergeSort.h"
+#include "../header/merge_sort.h"
 
 int main() {
   int N;
@@ -15,7 +15,7 @@ int main() {
   }
 
   if (!v.empty()) {
-    mergeSort<int>(v, 0, static_cast<std::uint64_t>(N - 1));
+    MergeSort<int>(v, 0, static_cast<std::uint64_t>(N - 1));
   }
 
   for (const auto x : v) {

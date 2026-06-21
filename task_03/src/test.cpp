@@ -25,3 +25,14 @@ TEST(GetPhoneCombinationsTest, SupportsDigitsWithFourLetters) {
 TEST(GetPhoneCombinationsTest, ReturnsEmptyForEmptyInput) {
   EXPECT_TRUE(GetPhoneCombinations("").empty());
 }
+
+TEST(GetPhoneCombinationsTest, ZeroAndOneProduceNoCombinations) {
+  EXPECT_TRUE(GetPhoneCombinations("0").empty());
+  EXPECT_TRUE(GetPhoneCombinations("1").empty());
+  EXPECT_TRUE(GetPhoneCombinations("01").empty());
+}
+
+TEST(GetPhoneCombinationsTest, ZeroOrOneInTheMiddleWipesOutAllCombinations) {
+  EXPECT_TRUE(GetPhoneCombinations("203").empty());
+  EXPECT_TRUE(GetPhoneCombinations("212").empty());
+}

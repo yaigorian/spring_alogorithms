@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -18,19 +19,11 @@ int main() {
     lessons.push_back({std::stod(start_text[i]), std::stod(end_text[i])});
   }
 
-  const std::vector<Lesson> selected = SelectMaximumLessons(lessons);
+  const std::vector<std::size_t> selected = SelectMaximumLessons(lessons);
 
   std::cout << selected.size();
-  std::vector<bool> used(count, false);
-  for (const Lesson& lesson : selected) {
-    for (int i = 0; i < count; ++i) {
-      if (!used[i] && lessons[i].start == lesson.start &&
-          lessons[i].end == lesson.end) {
-        used[i] = true;
-        std::cout << '\n' << start_text[i] << ' ' << end_text[i];
-        break;
-      }
-    }
+  for (const std::size_t index : selected) {
+    std::cout << '\n' << start_text[index] << ' ' << end_text[index];
   }
 
   return 0;

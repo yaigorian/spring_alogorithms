@@ -1,22 +1,25 @@
 #include "lesson_schedule.h"
 
 #include <algorithm>
+#include <numeric>
 
-std::vector<Lesson> SelectMaximumLessons(const std::vector<Lesson>& lessons) {
-  std::vector<Lesson> sorted = lessons;
-  std::ranges::sort(sorted, [](const Lesson& lhs, const Lesson& rhs) {
-    if (lhs.end != rhs.end) {
-      return lhs.end < rhs.end;
+std::vector<std::size_t> SelectMaximumLessons(
+    const std::vector<Lesson>& lessons) {
+  std::vector<std::size_t> order(lessons.size());
+  std::iota(order.begin(), order.end(), 0);
+  std::ranges::sort(order, [&lessons](std::size_t lhs, std::size_t rhs) {
+    if (lessons[lhs].end != lessons[rhs].end) {
+      return lessons[lhs].end < lessons[rhs].end;
     }
-    return lhs.start < rhs.start;
+    return lessons[lhs].start < lessons[rhs].start;
   });
 
-  std::vector<Lesson> selected;
+  std::vector<std::size_t> selected;
   double current_end = -1e18;
-  for (const Lesson& lesson : sorted) {
-    if (lesson.start >= current_end) {
-      selected.push_back(lesson);
-      current_end = lesson.end;
+  for (const std::size_t index : order) {
+    if (lessons[index].start >= current_end) {
+      selected.push_back(index);
+      current_end = lessons[index].end;
     }
   }
 

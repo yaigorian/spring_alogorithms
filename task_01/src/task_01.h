@@ -6,7 +6,6 @@ inline std::pair<int, int> FindValues(const int S, const int N,
                                       std::vector<int>& A) {
   int left = 0;
   int right = N - 1;
-  int first_value = 0;
 
   while (left < right) {
     if (A[left] + A[right] < S) {

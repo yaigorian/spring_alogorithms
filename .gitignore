@@ -54,13 +54,10 @@ _deps
 
 .cache/*
 .vscode/*
-build/*
+build/
 cmake-build-debug/*
 .idea/
 
 # Allow expected outputs for tests to be committed
 !**/tests/*.out
 !**/tests/**/*.out
-
-# Build directories
-build/

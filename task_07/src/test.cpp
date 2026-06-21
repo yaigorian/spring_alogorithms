@@ -2,13 +2,13 @@
 
 #include <vector>
 
-#include "../header/mergeSort.h"
+#include "../header/merge_sort.h"
 
 namespace {
 
 std::vector<int> SortCopy(std::vector<int> values) {
   if (!values.empty()) {
-    mergeSort<int>(values, 0, values.size() - 1);
+    MergeSort<int>(values, 0, values.size() - 1);
   }
   return values;
 }

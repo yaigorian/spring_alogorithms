@@ -4,7 +4,7 @@
 
 TEST(FindValues, Simple) {
   std::vector<int> v = {1, 2, 4};
-  ASSERT_EQ(FindValues(6, 3, v), std::make_pair(2, 4));
+  EXPECT_EQ(FindValues(6, 3, v), std::make_pair(2, 4));
 }
 
 // Test basic functionality with simple cases
