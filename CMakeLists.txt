@@ -28,6 +28,8 @@ if(BUILD_TASK AND build_task_index EQUAL -1)
   message(FATAL_ERROR "Unknown BUILD_TASK='${BUILD_TASK}'. Expected one of: ${HOMEWORK_TASKS}")
 endif()
 
+include(cmake/AddHomeworkTask.cmake)
+
 add_subdirectory(lib)
 
 include(CTest)
@@ -35,6 +37,8 @@ include(CTest)
 if(BUILD_TESTING)
   find_package(GTest REQUIRED)
   include(GoogleTest)
+else()
+  message(STATUS "Tests disabled. Pass -DBUILD_TESTING=ON to build them.")
 endif()
 
 if(BUILD_TASK)
