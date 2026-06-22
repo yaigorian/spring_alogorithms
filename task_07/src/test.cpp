@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "../header/merge_sort.h"
+#include "merge_sort.h"
 
 namespace {
 

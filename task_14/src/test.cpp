@@ -27,3 +27,20 @@ TEST(CanReachNonDecreasingSegmentTest, HandlesAllEqual) {
                                          {{1, 3}, {2, 3}}),
             (std::vector<std::string>{"Yes", "Yes"}));
 }
+
+TEST(CanReachNonDecreasingSegmentTest, HandlesSingleRowTable) {
+  EXPECT_EQ(CanReachNonDecreasingSegment({{4, 1, 7}}, {{1, 1}}),
+            (std::vector<std::string>{"Yes"}));
+}
+
+TEST(CanReachNonDecreasingSegmentTest, HandlesAllColumnsDecreasing) {
+  EXPECT_EQ(CanReachNonDecreasingSegment({{3, 2}, {2, 1}, {1, 0}},
+                                         {{1, 3}, {2, 3}}),
+            (std::vector<std::string>{"No", "No"}));
+}
+
+TEST(CanReachNonDecreasingSegmentTest, HandlesSingleRowQueries) {
+  EXPECT_EQ(CanReachNonDecreasingSegment({{5, 4, 3}, {2, 1, 0}, {9, 8, 7}},
+                                         {{1, 1}, {2, 2}, {3, 3}}),
+            (std::vector<std::string>{"Yes", "Yes", "Yes"}));
+}
