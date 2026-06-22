@@ -34,9 +34,9 @@ TEST(CanReachNonDecreasingSegmentTest, HandlesSingleRowTable) {
 }
 
 TEST(CanReachNonDecreasingSegmentTest, HandlesAllColumnsDecreasing) {
-  EXPECT_EQ(CanReachNonDecreasingSegment({{3, 2}, {2, 1}, {1, 0}},
-                                         {{1, 3}, {2, 3}}),
-            (std::vector<std::string>{"No", "No"}));
+  EXPECT_EQ(
+      CanReachNonDecreasingSegment({{3, 2}, {2, 1}, {1, 0}}, {{1, 3}, {2, 3}}),
+      (std::vector<std::string>{"No", "No"}));
 }
 
 TEST(CanReachNonDecreasingSegmentTest, HandlesSingleRowQueries) {
